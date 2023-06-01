@@ -1,16 +1,12 @@
-opening = []
-sign_inverse = {')': '(', ']': '[', '}': '{'}
-
-for sign in input():
-    if sign in ('(', '[', '{'):
-        opening.append(sign)
-    elif opening and sign_inverse[sign] != opening[-1]:
-        print('no')
-        break
-    elif not opening:
-        print('no')
-        break
+s = input()
+stack = []
+for ch in s:
+    if stack and ((stack[-1] == '(' and ch == ')') or (stack[-1] == '[' and ch == ']') or (stack[-1] == '{' and ch == '}')):
+        stack.pop()
     else:
-        opening.pop()
+        stack.append(ch)
+
+if stack:
+    print('no')
 else:
-    print('no' if opening else 'yes')
+    print('yes')
